@@ -66,6 +66,7 @@ import { getWebearchSuggestions } from "../executors/websearch-suggestion-resolv
 import { ChromiumBookmarkRepository } from "../plugins/browser-bookmarks-plugin/chromium-bookmark-repository";
 import { WeatherPlugin } from "../plugins/weather-plugin/weather-plugin";
 import { LoremIpsumPlugin } from "../plugins/lorem-ipsum-plugin/lorem-ipsum-plugin";
+import { WingetPlugin } from "../plugins/winget-plugin/winget-plugin";
 
 export function getProductionSearchEngine(
     operatingSystem: OperatingSystem,
@@ -218,6 +219,7 @@ export function getProductionSearchEngine(
         new DictionaryPlugin(config.dictionaryOptions, electronClipboardCopier, getGoogleDictionaryDefinitions),
         new WeatherPlugin(config, translationSet, electronClipboardCopier),
         new LoremIpsumPlugin(config.loremIpsumOptions, translationSet, electronClipboardCopier),
+        new WingetPlugin(config.wingetOptions),
     ];
 
     const fallbackPlugins: ExecutionPlugin[] = [webSearchPlugin];
